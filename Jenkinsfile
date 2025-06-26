@@ -5,9 +5,7 @@ pipeline{
         SLACK_URL = credentials('SLACK_URL')
         RENDERED_URL = 'https://gallery-45jb.onrender.com/'
     }
-    tools{
-        nodejs "nodejs"
-    }
+    
    
     stages{
         stage('cloning'){
@@ -17,7 +15,7 @@ pipeline{
             }
             }
 
-        stage('set up project'){
+        stage('prepare project'){
                 steps
             {
                 sh 'npm install'
