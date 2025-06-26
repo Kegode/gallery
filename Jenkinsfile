@@ -3,9 +3,7 @@ pipeline{
     tools{
         nodejs "nodejs"
     }
-    environment{
-
-    }
+   
     stages{
         stage('cloning'){
             steps
