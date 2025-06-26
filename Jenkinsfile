@@ -39,13 +39,16 @@ pipeline{
         
     }
     post{
-        success{
-            echo 'App has been deployed and now you can access it'
-            sh """
-                    curl -X POST -H 'Content-type: application/json' \
-                --data '{"text":"App has been deployed and now you can access it using the link below:","#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"}' \
+        success {
+                echo 'App has been deployed and now you can access it using the link below:'
+                sh """
+                    curl -X POST -H 'Content-type: application/json' \\
+                     --data '{
+                    "text": "*App has been deployed and now you can access it using the link below:*\n#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"
+                }' \\
                 $SLACK_URL
-            """
-        }
+                """
+                }
+
     }
 }
