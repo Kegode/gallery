@@ -1,5 +1,10 @@
 pipeline{
     agent any
+
+    environment{
+        SLACK_URL = 'https://hooks.slack.com/services/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'
+        RENDERED_URL = 'https://gallery-45jb.onrender.com/'
+    }
     tools{
         nodejs "nodejs"
     }
@@ -32,5 +37,15 @@ pipeline{
             }
             }
         
+    }
+    post{
+        success{
+            echo 'App has been deployed and now you can access it using the link below:'
+            sh """
+                    curl -X POST -H 'Content-type: application/json' \
+                --data '{"text":"#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"}' \
+                $SLACK_URL
+            """
+        }
     }
 }
