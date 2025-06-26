@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        SLACK_URL = 'https://hooks.slack.com/services/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'
+        SLACK_URL = credentials('SLACK_URL')
         RENDERED_URL = 'https://gallery-45jb.onrender.com/'
     }
     tools{
