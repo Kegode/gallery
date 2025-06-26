@@ -44,7 +44,7 @@ pipeline{
                 sh """
                     curl -X POST -H 'Content-type: application/json' \\
                      --data '{
-                    "text": "*App has been deployed and now you can access it using the link below:*\n#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"
+                    "text": "*App has been deployed and now you can access it using the link below:*\n#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View App>"
                 }' \\
                 $SLACK_URL
                 """
