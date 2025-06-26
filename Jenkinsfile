@@ -40,10 +40,10 @@ pipeline{
     }
     post{
         success{
-            echo 'App has been deployed and now you can access it using the link below:'
+            echo 'App has been deployed and now you can access it'
             sh """
                     curl -X POST -H 'Content-type: application/json' \
-                --data '{"text":"#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"}' \
+                --data '{"text":"App has been deployed and now you can access it using the link below:","#${env.BUILD_NUMBER} succeeded!\n<${env.RENDERED_URL}|View Build>"}' \
                 $SLACK_URL
             """
         }
